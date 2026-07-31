@@ -6,7 +6,7 @@ export function createRenderer(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   return renderer;
@@ -66,7 +66,9 @@ export function createScene(renderer, extent) {
   scene.fog = new THREE.Fog("#0D1113", extent * 3, extent * 7);
 
   const pmrem = new THREE.PMREMGenerator(renderer);
-  const environment = pmrem.fromScene(new RoomEnvironment(), 0.05).texture;
+  // r185 clips blurred PMREM scene captures aggressively; zero sigma keeps the
+  // generated environment valid and avoids a black result.
+  const environment = pmrem.fromScene(new RoomEnvironment(), 0).texture;
   scene.environment = environment;
   scene.environmentIntensity = 0.55;
 
@@ -85,3 +87,5 @@ export function resizeToHolder(renderer, camera, holder) {
   camera.aspect = clientWidth / clientHeight;
   camera.updateProjectionMatrix();
 }
+
+

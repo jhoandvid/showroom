@@ -2,14 +2,14 @@ import { lazy, Suspense } from "react";
 import { Building2, MapPin } from "lucide-react";
 import SceneSkeleton from "./SceneSkeleton";
 import StatusLegend from "./StatusLegend";
-import { countByStatus, getBuilding, getBuildingHeight } from "../data/buildingSource";
+import { countByStatus, getBuilding } from "../data/buildingSource";
 import { navigate, urls } from "../router/router";
 import { ACCENT } from "../theme";
 
-// maplibre-gl only loads on this route.
+// Load the map only on this route.
 const SiteMap = lazy(() => import("../map/SiteMap"));
 
-/** Site view: the entry point, where the project is picked off a live 3D map. */
+/** Site view: the entry point, where the project is located on an interactive map. */
 export default function MapView() {
   const building = getBuilding();
   const units = building.floors.flatMap((floor) => floor.units);
@@ -38,7 +38,6 @@ export default function MapView() {
         <SiteMap
           site={building.site}
           name={building.name}
-          heightMeters={getBuildingHeight()}
           onSelect={open}
         />
       </Suspense>
@@ -63,8 +62,8 @@ export default function MapView() {
       </div>
 
       <p className="mt-3 text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
-        Arrastrá para desplazar · rueda para acercar · clic derecho o Ctrl+arrastrar
-        para girar e inclinar · clic en el edificio para ver los pisos.
+        Arrastrá para desplazar · usá los controles para acercar · seleccioná “Ver edificio”
+        para explorar sus pisos y unidades.
       </p>
     </div>
   );
