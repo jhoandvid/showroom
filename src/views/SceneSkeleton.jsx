@@ -1,6 +1,6 @@
 import { ACCENT } from "../theme";
 
-/** Placeholder while a lazily-loaded 3D view downloads. */
+/** Marcador mientras se descarga una vista 3D de carga diferida. */
 export default function SceneSkeleton({ label, height = "clamp(400px, 60vh, 680px)" }) {
   return (
     <div

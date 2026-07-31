@@ -7,7 +7,7 @@ const FIELD_STYLE = {
   color: "#fff",
 };
 
-/** Editable list of the authored shapes. */
+/** Lista editable de las figuras creadas. */
 export default function HotspotShapeList({
   shapes,
   mode,

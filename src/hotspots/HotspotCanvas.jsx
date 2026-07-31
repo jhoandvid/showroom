@@ -5,7 +5,7 @@ function clamp(value) {
   return Math.min(Math.max(value, 0), 100);
 }
 
-/** Drawing surface: the reference image plus the shapes being authored. */
+/** Superficie de dibujo: imagen de referencia y figuras en edición. */
 export default function HotspotCanvas({
   imageUrl,
   shapes,
@@ -32,7 +32,7 @@ export default function HotspotCanvas({
     >
       <img src={imageUrl} alt="Imagen de referencia" className="block w-full" draggable={false} />
 
-      {/* Committed shapes stop capturing clicks while a polygon is in progress. */}
+      {/* Las figuras guardadas dejan de capturar clics mientras se dibuja un polígono. */}
       <HotspotOverlay
         shapes={shapes.map((shape) => ({ ...shape, label: shape.label || shape.id }))}
         activeId={selectedId}
@@ -54,7 +54,7 @@ export default function HotspotCanvas({
         </svg>
       )}
 
-      {/* Handles are HTML so the stretched SVG viewBox does not turn them into ellipses. */}
+      {/* Los controles son HTML para que el viewBox estirado no los vuelva elipses. */}
       {draft.map(([x, y], i) => (
         <span
           key={`${x}-${y}-${i}`}

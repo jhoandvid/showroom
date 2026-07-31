@@ -1,6 +1,6 @@
 import { ACCENT } from "../theme";
 
-/** Horizontal strip of chapter shortcuts. */
+/** Franja horizontal de accesos directos a capítulos. */
 export default function TourChapters({ chapters, activeIndex, onSelect }) {
   return (
     <div className="flex gap-2 overflow-x-auto pb-1">

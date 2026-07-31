@@ -6,7 +6,7 @@ import { urls } from "../router/router";
 import { PROJECT } from "../tour/tourConfig";
 import { ACCENT, statusStyle } from "../theme";
 
-/** Compact metric shown in the unit spec row. */
+/** Métrica compacta mostrada en la fila de características de la unidad. */
 function Metric({ icon: Icon, value, label }) {
   return (
     <div className="flex items-center gap-2">
@@ -21,7 +21,7 @@ function Metric({ icon: Icon, value, label }) {
   );
 }
 
-/** Unit detail: specs plus the walkthrough when the unit has one. */
+/** Detalle de unidad: características y recorrido cuando está disponible. */
 export default function UnitView({ unitCode }) {
   const building = getBuilding();
   const found = findUnit(unitCode);

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Build the site map from real OpenStreetMap tiles.
+# Construye el mapa del sitio a partir de mosaicos reales de OpenStreetMap.
 #
-#   tiles -> composite -> dark treatment -> project volume -> public/building/map.webp
+#   mosaicos -> composición -> tema oscuro -> volumen -> public/building/map.webp
 #
-# and write the volume's clickable silhouette into building.json as `mapHotspot`.
+# También escribe la silueta interactiva en building.json como `mapHotspot`.
 #
-# Data: © OpenStreetMap contributors, ODbL. Attribution is rendered in the app
-# (see MapView) and recorded in ATTRIBUTION.md. Only 16 tiles are fetched, well
-# inside the tile usage policy; re-run sparingly.
+# Datos: © colaboradores de OpenStreetMap, ODbL. La atribución se muestra en la
+# aplicación (ver MapView) y se registra en ATTRIBUTION.md. Solo se descargan
+# 16 mosaicos; volver a ejecutar con moderación.
 #
-# Requires ffmpeg and Chrome. Usage: bash scripts/build-map.sh [lat] [lon] [zoom]
+# Requiere ffmpeg y Chrome. Uso: bash scripts/build-map.sh [lat] [lon] [zoom]
 set -euo pipefail
 
 LAT="${1:-4.7280}"
@@ -18,9 +18,9 @@ ZOOM="${3:-16}"
 GRID=4
 UA="AndesGT-showroom-prototype/1.0 (jrojas@andesgt.com)"
 
-# node and Chrome are native Windows binaries and cannot resolve Git Bash paths
-# like /c/... or /tmp/..., so every path handed to them is converted first.
-# `cygpath -m` output (C:/foo) is accepted by Git Bash too, so one form serves both.
+# node y Chrome son binarios nativos de Windows y no resuelven rutas de Git Bash
+# como /c/... o /tmp/..., por lo que se convierten antes de usarlas.
+# Git Bash también acepta la salida de `cygpath -m` (C:/foo).
 native() { if command -v cygpath >/dev/null; then cygpath -m "$1"; else printf '%s' "$1"; fi; }
 
 ROOT="$(native "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)")"
@@ -44,8 +44,8 @@ require('fs').writeFileSync('$WORK/list.txt', rows.join('\n')+'\n');
 "
 
 echo "[2/5] Obteniendo $((GRID*GRID)) tiles de OpenStreetMap…"
-# Tiles are cached so re-running to tweak the volume never re-hits the tile
-# server, which their usage policy asks for.
+# Los mosaicos se guardan en caché para que los ajustes del volumen no vuelvan a
+# consultar el servidor, tal como solicita su política de uso.
 CACHE="$ROOT/.cache/osm-tiles"
 mkdir -p "$CACHE"
 hits=0
@@ -65,8 +65,8 @@ echo "      $hits en caché · $misses descargados"
 echo "[3/5] Componiendo y aplicando tema oscuro…"
 ffmpeg -y -v error -start_number 0 -i "$WORK/t%02d.png" -vf "tile=${GRID}x${GRID}" \
   -frames:v 1 "$WORK/base.png"
-# Invert then re-tint: turns the light OSM style into a dark basemap that keeps
-# street names legible, instead of just dimming everything into mud.
+# Invierte y vuelve a teñir el mapa claro de OSM para obtener un mapa base oscuro
+# que conserve legibles los nombres de calles.
 ffmpeg -y -v error -i "$WORK/base.png" -vf \
   "crop=1024:680:0:180,hue=s=0.30,eq=brightness=-0.10:contrast=1.05,negate,hue=s=0.55:h=150,eq=brightness=-0.06:contrast=0.92,colorbalance=bs=0.06:gs=0.04" \
   "$WORK/dark.png"

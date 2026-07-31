@@ -1,4 +1,4 @@
-<!-- Temporary MapLibre diagnostic page. Delete once the map is verified. -->
+<!-- Página temporal de diagnóstico de MapLibre. Eliminar al verificar el mapa. -->
 <style>
   html, body { margin: 0; background: #111; color: #eee; font: 12px system-ui; }
   #map { width: 800px; height: 420px; }
@@ -16,7 +16,7 @@
     out.textContent = `PROBE ${seen.join(" | ")}`;
   };
 
-  // Count tile requests: no tile traffic means the worker never came up.
+  // Cuenta las solicitudes de mosaicos: si no hay tráfico, el worker no inició.
   let tiles = 0;
   const realFetch = window.fetch;
   window.fetch = (...args) => {

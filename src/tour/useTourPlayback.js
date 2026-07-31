@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { frameToTime, timeToFrame } from "./tourConfig";
 
 /**
- * Drive the mp4 overlay used for smooth linear playback of the walkthrough.
+ * Controla la capa mp4 usada para reproducir el recorrido de forma continua.
  *
- * The still sequence gives a responsive scrub but only samples the render at
- * 5 fps, so continuous playback runs off the video instead.
+ * La secuencia de imágenes permite desplazamiento inmediato, pero solo muestrea
+ * el render a 5 fps; por eso la reproducción continua utiliza el video.
  */
 export function useTourPlayback({ videoRef, seek }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -32,8 +32,8 @@ export function useTourPlayback({ videoRef, seek }) {
     [videoRef],
   );
 
-  // Mirror playback position onto the frame index so the still layer, progress
-  // bar and chapter list are already in sync the moment playback stops.
+  // Refleja la posición de reproducción en el índice de cuadro para que la capa
+  // de imágenes, la barra y los capítulos estén sincronizados al detenerse.
   useEffect(() => {
     if (!isPlaying) return undefined;
     const tick = () => {

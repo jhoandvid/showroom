@@ -1,18 +1,18 @@
 /**
- * Generate schematic placeholder assets for the showroom.
+ * Genera assets esquemáticos provisionales para el showroom.
  *
- * Everything is derived from the geometry stored in building.json, so the drawn
- * shapes and their clickable hotspots can never drift apart:
+ * Todo deriva de la geometría guardada en building.json, por lo que las figuras
+ * dibujadas y sus hotspots interactivos siempre permanecen alineados:
  *
- *   exterior.svg     tower whose floor bands come from each floor's `hotspot`
- *   floors/<id>.svg  axonometric floor plate; unit hotspots are the projection
- *                    of each unit's `planBox`
+ *   exterior.svg     torre cuyas bandas provienen del `hotspot` de cada piso
+ *   floors/<id>.svg  planta axonométrica; los hotspots son la proyección del
+ *                    `planBox` de cada unidad
  *
- * `planBox` is the source of truth for a unit (a flat rectangle in plan space);
- * `hotspot` is generated from it, which keeps this script idempotent.
+ * `planBox` es la fuente de verdad de una unidad (un rectángulo en el espacio
+ * del plano); `hotspot` se genera a partir de él, haciendo idempotente el script.
  *
- * Delete once the real render and floor plans land.
- * Usage: node scripts/generate-placeholder-assets.mjs
+ * Eliminar cuando estén disponibles el render y los planos reales.
+ * Uso: node scripts/generate-placeholder-assets.mjs
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -27,7 +27,7 @@ const PLAN = { w: 1200, h: 780 };
 const round = (n) => Number(n.toFixed(1));
 const pct = (value, total) => Number(((value / total) * 100).toFixed(2));
 
-/** Axis-aligned bounds of a polygon, as [x1, y1, x2, y2]. */
+/** Límites de un polígono alineados a los ejes: [x1, y1, x2, y2]. */
 function boundsOf(points) {
   const xs = points.map((p) => p[0]);
   const ys = points.map((p) => p[1]);
@@ -36,13 +36,13 @@ function boundsOf(points) {
 
 const polygon = (points) => points.map(([x, y]) => `${round(x)},${round(y)}`).join(" ");
 
-// ---------------------------------------------------------------- projection
+// ---------------------------------------------------------------- proyección
 
 /**
- * Build an axonometric projector for a plan-space region.
+ * Construye un proyector axonométrico para una región del plano.
  *
- * Plan coordinates are normalised to the region, then mapped onto a diamond so
- * the plate reads as part of a render instead of a flat orthogonal drawing.
+ * Las coordenadas se normalizan a la región y luego se proyectan sobre un rombo
+ * para que la planta se lea como un render y no como un dibujo ortogonal plano.
  */
 function makeProjector({ region, canvas, cx, cy, sx, sy }) {
   const [x1, y1, x2, y2] = region;
@@ -53,12 +53,12 @@ function makeProjector({ region, canvas, cx, cy, sx, sy }) {
   };
 }
 
-/** Project the four corners of a plan-space rectangle. */
+/** Proyecta las cuatro esquinas de un rectángulo del plano. */
 function projectBox([x1, y1, x2, y2], project) {
   return [project(x1, y1), project(x2, y1), project(x2, y2), project(x1, y2)];
 }
 
-/** Depth ordering: larger u+v sits closer to the viewer. */
+/** Orden de profundidad: un valor u+v mayor queda más cerca del observador. */
 function depthOf([x1, y1, x2, y2]) {
   return x1 + x2 + y1 + y2;
 }
@@ -68,15 +68,15 @@ const centroidOf = (points) => [
   points.reduce((s, p) => s + p[1], 0) / points.length,
 ];
 
-/** Shift a polygon vertically, used to extrude slabs and walls. */
+/** Desplaza verticalmente un polígono para extruir losas y muros. */
 const lift = (points, dy) => points.map(([x, y]) => [x, y + dy]);
 
 /**
- * The two side faces of an extruded box that face the viewer.
+ * Las dos caras laterales de una caja extruida orientadas hacia el observador.
  *
- * `projectBox` always emits corners as [back, right, front, left], so the
- * visible faces are edges right→front and front→left; the other two sit behind
- * the roof and drawing them would only add hidden geometry.
+ * `projectBox` siempre genera las esquinas como [fondo, derecha, frente,
+ * izquierda], por lo que las caras visibles son derecha→frente y
+ * frente→izquierda; las otras quedan ocultas tras la cubierta.
  */
 function visibleSideFaces(top, depth) {
   return [1, 2].map((i) => {
@@ -86,7 +86,7 @@ function visibleSideFaces(top, depth) {
   });
 }
 
-// ------------------------------------------------------------------ the plan
+// ------------------------------------------------------------------ la planta
 
 const PLAN_REGION = (() => {
   const boxes = building.floors[0].units.map((unit) => unit.planBox ?? boundsOf(unit.hotspot));
@@ -109,7 +109,7 @@ const projectPlan = makeProjector({
 const SLAB_DEPTH = 30;
 const WALL_HEIGHT = 26;
 
-/** One unit drawn as an axonometric block. */
+/** Una unidad dibujada como bloque axonométrico. */
 function unitBlock(unit) {
   const box = unit.planBox;
   const top = projectBox(box, projectPlan);
@@ -120,7 +120,7 @@ function unitBlock(unit) {
     .map(({ quad }) => `<polygon points="${polygon(quad)}" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>`)
     .join("\n      ");
 
-  // Wet core against the corridor-facing corner, in plan space.
+  // Núcleo húmedo junto a la esquina orientada al corredor, en el plano.
   const [bx1, by1, bx2, by2] = box;
   const wetW = (bx2 - bx1) * 0.32;
   const wetH = (by2 - by1) * 0.34;
@@ -142,7 +142,7 @@ function unitBlock(unit) {
     </g>`;
 }
 
-/** Axonometric floor plate with one block per unit. */
+/** Planta axonométrica con un bloque por unidad. */
 function planSvg(floor) {
   const { w, h } = PLAN;
   const pad = 3;
@@ -174,15 +174,15 @@ function planSvg(floor) {
 `;
 }
 
-// -------------------------------------------------------------- the exterior
+// -------------------------------------------------------------- el exterior
 
-/** Stable pseudo-random in [0,1) so facade variation does not change per run. */
+/** Pseudoaleatorio estable en [0,1) para conservar la fachada entre ejecuciones. */
 function jitter(seed) {
   const x = Math.sin(seed * 12.9898) * 43758.5453;
   return x - Math.floor(x);
 }
 
-/** One bay of a floor: glazing, spandrel and, on some bays, a balcony. */
+/** Un módulo de piso: vidriado, antepecho y, en algunos casos, balcón. */
 function bay(x, y, width, height, seed) {
   const glassH = height * 0.62;
   const spandrelY = y + glassH;
@@ -204,7 +204,7 @@ function bay(x, y, width, height, seed) {
       ${balcony}`;
 }
 
-/** A floor band of the facade, divided into one bay per unit. */
+/** Banda de piso de la fachada, dividida en un módulo por unidad. */
 function floorBand(band, slots, level) {
   const inset = band.width * 0.035;
   const cell = (band.width - inset * 2) / slots;
@@ -220,7 +220,7 @@ function floorBand(band, slots, level) {
     </g>`;
 }
 
-/** Sky, clouds and a distant skyline behind the tower. */
+/** Cielo, nubes y perfil urbano distante detrás de la torre. */
 function skyMarkup(horizonY) {
   const clouds = [
     [300, 150, 190, 34],
@@ -240,9 +240,9 @@ function skyMarkup(horizonY) {
   return `${clouds}${skyline}`;
 }
 
-/** Plaza, planting and the tower's cast shadow. */
+/** Plaza, vegetación y sombra proyectada por la torre. */
 function groundMarkup({ x, x2, y2 }, canvasW, canvasH) {
-  // Canopies rest on grade: the bottom of each circle lands just below y2.
+  // Las copas apoyan sobre la rasante: cada círculo termina apenas debajo de y2.
   const trees = [
     [x - 156, 48],
     [x - 78, 34],
@@ -287,8 +287,8 @@ function exteriorSvg() {
     .map(({ floor, band }) => floorBand(band, floor.units.length, floor.level))
     .join("\n    ");
 
-  // Narrow return face on the right, purely for depth. The clickable floor
-  // bands stay on the front facade, which is what the hotspots describe.
+  // Cara lateral angosta a la derecha, solo para aportar profundidad. Las bandas
+  // interactivas permanecen sobre la fachada frontal descrita por los hotspots.
   const sideW = towerW * 0.16;
   const sideSkew = 26;
   const side = `<polygon points="${round(tower.x2)},${round(tower.y)} ${round(tower.x2 + sideW)},${round(tower.y + sideSkew)} ${round(tower.x2 + sideW)},${round(tower.y2 + sideSkew * 0.4)} ${round(tower.x2)},${round(tower.y2)}" fill="#7C8C8E"/>
@@ -325,7 +325,7 @@ function exteriorSvg() {
 
   ${side}
 
-  <!-- Parapet and rooftop plant room. -->
+  <!-- Parapeto y sala de máquinas en la cubierta. -->
   <rect x="${round(tower.x - 18)}" y="${round(tower.y - 30)}" width="${round(towerW + 36 + sideW * 0.5)}" height="30" fill="#D8DEDC"/>
   <rect x="${round(tower.x - 18)}" y="${round(tower.y - 30)}" width="${round(towerW + 36 + sideW * 0.5)}" height="7" fill="#EFF2F1"/>
   <rect x="${round(tower.x + towerW * 0.4)}" y="${round(tower.y - 70)}" width="${round(towerW * 0.2)}" height="40" fill="#C2CAC8"/>
@@ -337,7 +337,7 @@ function exteriorSvg() {
   <rect x="${round(tower.x)}" y="${round(tower.y)}" width="${round(towerW)}" height="${round(tower.y2 - tower.y)}" fill="url(#sheen)"/>
   <rect x="${round(tower.x)}" y="${round(tower.y)}" width="${round(towerW)}" height="${round(tower.y2 - tower.y)}" fill="none" stroke="#9EA9A7" stroke-width="2"/>
 
-  <!-- Lobby at grade. -->
+  <!-- Vestíbulo en planta baja. -->
   <rect x="${round(tower.x + towerW * 0.3)}" y="${round(tower.y2 - 4)}" width="${round(towerW * 0.4)}" height="4" fill="#C9D1CF"/>
 
   <rect width="${w}" height="${h}" fill="url(#vignette)"/>
@@ -346,11 +346,11 @@ function exteriorSvg() {
 `;
 }
 
-// ------------------------------------------------------------------- output
+// ------------------------------------------------------------------- salida
 
 mkdirSync(`${ROOT}/public/building/floors`, { recursive: true });
 
-// Normalise the dataset first: plan boxes drive everything downstream.
+// Primero normaliza los datos: los rectángulos de planta definen todo lo demás.
 building.floors.forEach((floor) => {
   floor.units.forEach((unit) => {
     unit.planBox = unit.planBox ?? boundsOf(unit.hotspot);
@@ -362,7 +362,7 @@ building.floors.forEach((floor) => {
   writeFileSync(`${ROOT}/public/building/floors/${floor.id}.svg`, planSvg(floor));
 });
 
-// Hotspots follow the projection so the clickable zones match what is drawn.
+// Los hotspots siguen la proyección para coincidir con las zonas dibujadas.
 building.exteriorImage = "/building/exterior.svg";
 
 building.floors.forEach((floor) => {

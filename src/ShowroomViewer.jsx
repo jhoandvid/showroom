@@ -12,7 +12,7 @@ import { ACCENT, SURFACE } from "./theme";
 
 const CONTROL_STYLE = { background: "rgba(255,255,255,0.13)" };
 
-/** `project` overrides the default identity so a unit page can name the unit. */
+/** `project` reemplaza la identidad predeterminada para nombrar la unidad. */
 export default function ShowroomViewer({ project }) {
   const stageRef = useRef(null);
   const videoRef = useRef(null);
@@ -28,7 +28,7 @@ export default function ShowroomViewer({ project }) {
   });
   const playback = useTourPlayback({ videoRef, seek });
 
-  // Any manual scrub takes over from playback.
+  // Cualquier desplazamiento manual toma el control de la reproducción.
   const onStagePointerDown = useCallback(
     (event) => {
       playback.stop();
@@ -55,7 +55,7 @@ export default function ShowroomViewer({ project }) {
     [playback, seek],
   );
 
-  // React attaches wheel listeners passively, so bind it directly to opt out.
+  // React registra la rueda como pasiva; se enlaza directamente para evitarlo.
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return undefined;
@@ -93,8 +93,8 @@ export default function ShowroomViewer({ project }) {
         onKeyDown={handlers.onKeyDown}
         className="relative w-full touch-none select-none overflow-hidden outline-none"
         style={{
-          // In fullscreen the stage owns the whole screen, so a fixed ratio
-          // would overflow on displays that are not 16:9.
+          // En pantalla completa el escenario ocupa toda la pantalla; una
+          // proporción fija desbordaría las pantallas que no sean 16:9.
           aspectRatio: isFullscreen ? "auto" : "16 / 9",
           height: isFullscreen ? "100%" : undefined,
           background: SURFACE,

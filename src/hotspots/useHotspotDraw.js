@@ -3,10 +3,10 @@ import { useCallback, useRef, useState } from "react";
 const MIN_POINTS = 3;
 
 /**
- * Author polygon hotspots by clicking on an image.
+ * Permite crear hotspots poligonales haciendo clic sobre una imagen.
  *
- * Points are stored as percentages of the image box so the exported shapes are
- * resolution independent.
+ * Los puntos se guardan como porcentajes de la caja de la imagen para que las
+ * figuras exportadas sean independientes de la resolución.
  */
 export function useHotspotDraw() {
   const [shapes, setShapes] = useState([]);
@@ -24,7 +24,7 @@ export function useHotspotDraw() {
 
   const cancelDraft = useCallback(() => setDraft([]), []);
 
-  /** Turn the draft into a shape once it has enough points to be a polygon. */
+  /** Convierte el borrador en una figura cuando tiene suficientes puntos. */
   const commitDraft = useCallback(() => {
     if (draft.length < MIN_POINTS) return;
     const id = `h${nextId.current}`;
@@ -50,7 +50,7 @@ export function useHotspotDraw() {
     nextId.current = 1;
   }, []);
 
-  /** Replace the whole set, used when loading shapes back in to edit them. */
+  /** Reemplaza el conjunto completo al volver a cargar figuras para editarlas. */
   const loadShapes = useCallback((incoming) => {
     setShapes(incoming);
     setDraft([]);

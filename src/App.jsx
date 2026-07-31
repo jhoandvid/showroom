@@ -5,7 +5,7 @@ import MapView from "./views/MapView";
 import UnitView from "./views/UnitView";
 import { useRoute } from "./router/router";
 
-/** Resolve the matched route to its view. */
+/** Resuelve la ruta encontrada a su vista correspondiente. */
 function renderRoute(route) {
   switch (route.name) {
     case "editor":

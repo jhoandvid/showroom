@@ -8,7 +8,7 @@ import { statusStyle } from "../theme";
 
 const HOVER_EMISSIVE = new THREE.Color("#1FAE72");
 
-/** Frame the tower from a three-quarter view. */
+/** Encuadra la torre desde una vista de tres cuartos. */
 function placeCamera(camera, controls, totalHeight, extent) {
   camera.position.set(extent * 1.5, totalHeight * 1.15, extent * 1.75);
   controls.target.set(0, totalHeight * 0.45, 0);
@@ -16,11 +16,11 @@ function placeCamera(camera, controls, totalHeight, extent) {
 }
 
 /**
- * The building as a real 3D model you can orbit, with each floor pickable.
+ * Edificio como modelo 3D orbitable, con cada piso seleccionable.
  *
- * Hovering highlights a floor and clicking opens it. Because selection is a
- * raycast against the actual geometry, there are no 2D hotspot coordinates to
- * keep in sync with the image.
+ * Al pasar el cursor se resalta un piso y al hacer clic se abre. Como la
+ * selección usa raycast sobre la geometría real, no hay coordenadas de hotspots
+ * 2D que deban mantenerse sincronizadas con la imagen.
  */
 export default function BuildingScene({ floors, levelBase, levelHeight, onSelectFloor }) {
   const holderRef = useRef(null);
@@ -49,7 +49,7 @@ export default function BuildingScene({ floors, levelBase, levelHeight, onSelect
     controls.dampingFactor = 0.075;
     controls.minDistance = extent * 0.9;
     controls.maxDistance = extent * 4.5;
-    // Stop the camera dropping under the ground plane.
+    // Evita que la cámara descienda por debajo del plano del suelo.
     controls.maxPolarAngle = Math.PI / 2 - 0.05;
     controls.autoRotateSpeed = 0.7;
     placeCamera(camera, controls, tower.totalHeight, extent);

@@ -16,11 +16,11 @@ const MODES = [
 const PANEL_STYLE = { background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.10)" };
 
 /**
- * Authoring tool for the polygon hotspots consumed by `building.json`.
+ * Herramienta de creación de hotspots poligonales usados por `building.json`.
  *
- * Load a reference image, click the vertices of each zone, name it and copy the
- * resulting JSON. Coordinates are percentages, so the same shapes work at any
- * render size.
+ * Permite cargar una imagen de referencia, marcar los vértices de cada zona,
+ * nombrarla y copiar el JSON resultante. Las coordenadas son porcentuales, por
+ * lo que las figuras funcionan con cualquier tamaño de render.
  */
 export default function HotspotEditor() {
   const [mode, setMode] = useState("units");

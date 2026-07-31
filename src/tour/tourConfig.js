@@ -1,17 +1,16 @@
 import manifest from "./tourManifest.json";
 
 /**
- * Tour asset layout, chapter map and project metadata.
+ * Estructura de assets del recorrido, capítulos y metadatos del proyecto.
  *
- * Assets under `public/tour/` are produced by `scripts/build-tour.sh`, which
- * also rewrites `tourManifest.json` so frame count and duration never drift
- * from what is actually on disk:
- *   frames/  -> webp stills sampled from the render, used for the drag scrub
- *   tour.mp4 -> H.264 re-encode used for smooth linear playback
+ * Los assets de `public/tour/` se generan con `scripts/build-tour.sh`, que también
+ * reescribe `tourManifest.json` para sincronizar cantidad de cuadros y duración:
+ *   frames/  -> imágenes webp muestreadas del render para el arrastre
+ *   tour.mp4 -> recodificación H.264 para reproducción continua
  */
 export const TOUR = {
   frameCount: manifest.frameCount,
-  // ffmpeg numbers its output from 1, so the file number is the index plus one.
+  // ffmpeg numera su salida desde 1; el número de archivo es el índice más uno.
   frameUrl: (index) => `/tour/frames/f${String(index + 1).padStart(3, "0")}.webp`,
   videoUrl: "/tour/tour.mp4",
   posterUrl: "/tour/poster.webp",
@@ -20,17 +19,17 @@ export const TOUR = {
   durationSeconds: manifest.durationSeconds,
 };
 
-/** Convert a frame index to its timestamp in the playback video. */
+/** Convierte un índice de cuadro a su instante en el video. */
 export function frameToTime(index) {
   return (index / (TOUR.frameCount - 1)) * TOUR.durationSeconds;
 }
 
-/** Convert a playback timestamp back to the nearest frame index. */
+/** Convierte un instante del video al índice de cuadro más cercano. */
 export function timeToFrame(seconds) {
   return Math.round((seconds / TOUR.durationSeconds) * (TOUR.frameCount - 1));
 }
 
-/** Named stops along the walkthrough, ordered by position in the tour. */
+/** Paradas nombradas del recorrido, ordenadas según su posición. */
 export const CHAPTERS = [
   { code: "01", label: "Acceso", desc: "Puerta principal, apto. 123", frame: 0 },
   { code: "02", label: "Cocina", desc: "Barra y ventanal a la ciudad", frame: 40 },
@@ -42,7 +41,7 @@ export const CHAPTERS = [
   { code: "08", label: "Baño", desc: "Ducha y mobiliario", frame: 187 },
 ];
 
-/** Return the index of the last chapter already reached by the playhead. */
+/** Devuelve el índice del último capítulo alcanzado por el cabezal. */
 export function activeChapterIndex(chapters, frame) {
   let active = 0;
   chapters.forEach((chapter, i) => {

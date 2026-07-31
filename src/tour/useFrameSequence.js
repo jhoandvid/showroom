@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const CONCURRENCY = 6;
 const COARSE_STEP = 8;
 
-/** Load a single image, resolving to null instead of rejecting on failure. */
+/** Carga una imagen y devuelve null en vez de rechazar si falla. */
 function loadImage(url) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -14,10 +14,10 @@ function loadImage(url) {
 }
 
 /**
- * Split every frame index into a coarse pass and a fill-in pass.
+ * Divide los índices de cuadros en una pasada inicial y otra de relleno.
  *
- * The coarse pass is loaded first so the viewer becomes interactive after a
- * fraction of the payload; missing frames fall back to the nearest neighbour.
+ * La pasada inicial se carga primero para volver interactivo el visor con una
+ * fracción del peso; los cuadros faltantes usan el vecino más cercano.
  */
 function buildPasses(frameCount) {
   const coarse = [];
@@ -29,7 +29,7 @@ function buildPasses(frameCount) {
   return { coarse, fine };
 }
 
-/** Load the given indices with a bounded number of parallel requests. */
+/** Carga los índices indicados con un número limitado de solicitudes paralelas. */
 async function runPass(indices, frameUrl, onLoaded, isCancelled) {
   let cursor = 0;
   const worker = async () => {
@@ -43,7 +43,7 @@ async function runPass(indices, frameUrl, onLoaded, isCancelled) {
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 }
 
-/** Return the frame at index, or the closest already-loaded neighbour. */
+/** Devuelve el cuadro indicado o el vecino ya cargado más cercano. */
 export function resolveFrame(frames, index) {
   if (frames[index]) return frames[index];
   for (let offset = 1; offset < frames.length; offset += 1) {
@@ -54,10 +54,10 @@ export function resolveFrame(frames, index) {
 }
 
 /**
- * Progressively preload the still sequence backing the scrub interaction.
+ * Precarga progresivamente la secuencia de imágenes usada para el desplazamiento.
  *
- * Returns the mutable frame array by ref (images are not React state), plus the
- * counters the UI needs for its loading indicator.
+ * Devuelve por referencia el arreglo mutable de cuadros (las imágenes no son
+ * estado de React), junto con los contadores del indicador de carga.
  */
 export function useFrameSequence({ frameCount, frameUrl }) {
   const framesRef = useRef([]);
@@ -103,7 +103,7 @@ export function useFrameSequence({ frameCount, frameUrl }) {
     framesRef,
     loaded,
     total: frameCount,
-    // Frames the coarse pass has to finish before the viewer turns interactive.
+    // Cuadros de la pasada inicial necesarios para habilitar la interacción.
     coarseTotal: Math.ceil(frameCount / COARSE_STEP),
     ready,
     failed,

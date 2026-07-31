@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ACCENT } from "../theme";
 
-/** Seekable progress track with a tick for every chapter. */
+/** Barra de progreso navegable con una marca por capítulo. */
 export default function TourProgress({ index, total, chapters, onSeek }) {
   const trackRef = useRef(null);
   const [isScrubbing, setIsScrubbing] = useState(false);

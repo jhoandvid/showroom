@@ -2,12 +2,11 @@ import { useEffect, useRef } from "react";
 import { resolveFrame } from "./useFrameSequence";
 
 /**
- * Paint the still for `index` onto a fixed-size canvas.
+ * Dibuja la imagen de `index` en un canvas de tamaño fijo.
  *
- * The canvas keeps the frame's intrinsic resolution and relies on CSS
- * `object-fit: cover` for layout, so no manual crop maths is needed.
- * `revision` exists to force a repaint as late-arriving frames replace
- * the nearest-neighbour fallback.
+ * El canvas conserva la resolución original y usa `object-fit: cover` para la
+ * disposición, evitando cálculos manuales de recorte. `revision` fuerza un
+ * repintado cuando llegan cuadros que reemplazan al vecino de respaldo.
  */
 export default function FrameCanvas({ framesRef, index, width, height, revision, objectFit }) {
   const canvasRef = useRef(null);

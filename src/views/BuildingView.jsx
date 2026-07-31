@@ -13,10 +13,10 @@ import { navigate, urls } from "../router/router";
 import { ACCENT, statusStyle } from "../theme";
 import { floorStatus } from "../three/buildTower";
 
-// three.js only loads on this route.
+// three.js solo se carga en esta ruta.
 const BuildingScene = lazy(() => import("../three/BuildingScene"));
 
-/** Building entry point: pick a floor off the 3D model. */
+/** Entrada al edificio: permite elegir un piso en el modelo 3D. */
 export default function BuildingView() {
   const building = getBuilding();
   const goToFloor = (floorId) => navigate(urls.floors(building.id, floorId));

@@ -1,6 +1,6 @@
 import { navigate } from "./router";
 
-/** Anchor that navigates in-app instead of reloading the document. */
+/** Enlace que navega dentro de la aplicación sin recargar el documento. */
 export function Link({ to, children, className, style, ...rest }) {
   return (
     <a

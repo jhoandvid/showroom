@@ -1,7 +1,7 @@
 export const ACCENT = "#1FAE72";
 export const SURFACE = "#0B0D0E";
 
-/** Visual treatment per commercial state of a unit. */
+/** Tratamiento visual para cada estado comercial de una unidad. */
 export const STATUS = {
   disponible: { label: "Disponible", color: "#1FAE72", fill: "rgba(31,174,114,0.28)" },
   reservado: { label: "Reservado", color: "#E8B44A", fill: "rgba(232,180,74,0.28)" },
@@ -10,7 +10,7 @@ export const STATUS = {
 
 export const STATUS_ORDER = ["disponible", "reservado", "vendido"];
 
-/** Return the status treatment, falling back to `disponible` for unknown values. */
+/** Devuelve el estilo del estado; usa `disponible` para valores desconocidos. */
 export function statusStyle(status) {
   return STATUS[status] ?? STATUS.disponible;
 }

@@ -6,14 +6,14 @@ const DEPTH = 30;
 const SLAB = 0.38;
 const GLASS_INSET = 0.7;
 
-/** Dominant commercial state of a floor: available if any unit still is. */
+/** Estado comercial dominante: disponible si alguna unidad todavía lo está. */
 export function floorStatus(floor) {
   if (floor.units.some((unit) => unit.status === "disponible")) return "disponible";
   if (floor.units.some((unit) => unit.status === "reservado")) return "reservado";
   return "vendido";
 }
 
-/** Glazing for one floor, tinted by how much of it is still for sale. */
+/** Vidriado de un piso, teñido según cuánto queda disponible para la venta. */
 function glassMaterial(status) {
   const tint = new THREE.Color(statusStyle(status).color).lerp(new THREE.Color("#9FC6C4"), 0.62);
   return new THREE.MeshStandardMaterial({
@@ -28,7 +28,7 @@ function glassMaterial(status) {
 const slabMaterial = () =>
   new THREE.MeshStandardMaterial({ color: "#DCE2E0", metalness: 0.1, roughness: 0.7 });
 
-/** Vertical circulation core, poking above the roof. */
+/** Núcleo de circulación vertical que sobresale de la cubierta. */
 function addCore(group, totalHeight) {
   const core = new THREE.Mesh(
     new THREE.BoxGeometry(WIDTH * 0.2, totalHeight + 3.4, DEPTH * 0.26),
@@ -40,10 +40,10 @@ function addCore(group, totalHeight) {
 }
 
 /**
- * Build the tower with one pickable mesh per floor.
+ * Construye la torre con una malla seleccionable por piso.
  *
- * Meshes carry `userData.floor` so a raycast hit maps straight back to the data,
- * which is what replaces the 2D hotspot polygons entirely.
+ * Las mallas incluyen `userData.floor` para vincular directamente el resultado
+ * del raycast con los datos y reemplazar por completo los hotspots 2D.
  */
 export function buildTower(floors, { levelBase, levelHeight }) {
   const group = new THREE.Group();
@@ -72,7 +72,7 @@ export function buildTower(floors, { levelBase, levelHeight }) {
     group.add(slab);
   });
 
-  // Ground slab and roof parapet.
+  // Losa de base y parapeto de cubierta.
   const plinth = new THREE.Mesh(
     new THREE.BoxGeometry(WIDTH + 6, 0.6, DEPTH + 6),
     slabMaterial(),
@@ -91,7 +91,7 @@ export function buildTower(floors, { levelBase, levelHeight }) {
   return { group, pickable, totalHeight, footprint: { width: WIDTH, depth: DEPTH } };
 }
 
-/** Release every geometry and material the tower owns. */
+/** Libera todas las geometrías y materiales pertenecientes a la torre. */
 export function disposeTower(group) {
   group.traverse((object) => {
     if (!object.isMesh) return;

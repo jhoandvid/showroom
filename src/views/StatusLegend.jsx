@@ -1,6 +1,6 @@
 import { STATUS_ORDER, statusStyle } from "../theme";
 
-/** Colour key for the commercial states, with optional per-state counts. */
+/** Referencia de colores para los estados comerciales, con conteos opcionales. */
 export default function StatusLegend({ counts }) {
   return (
     <div className="flex flex-wrap items-center gap-4">

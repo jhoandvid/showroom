@@ -10,10 +10,10 @@ function clamp(value, max) {
 }
 
 /**
- * Own the current frame index and drive it from pointer, wheel and key input.
+ * Gestiona el índice actual mediante puntero, rueda y teclado.
  *
- * Dragging right-to-left advances the walkthrough; one full-width drag covers
- * the whole tour, so sensitivity scales with the container width.
+ * Arrastrar de derecha a izquierda avanza el recorrido. Un arrastre del ancho
+ * completo cubre todo el tour, por lo que la sensibilidad se adapta al contenedor.
  */
 export function useScrub({ total, containerRef, onInteract }) {
   const [index, setIndex] = useState(0);

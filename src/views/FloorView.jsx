@@ -14,7 +14,7 @@ import { Link } from "../router/Link";
 import { navigate, urls } from "../router/router";
 import { ACCENT, statusStyle } from "../theme";
 
-/** Floor plan with every unit as a selectable zone. */
+/** Plano del piso con cada unidad como zona seleccionable. */
 export default function FloorView({ floorId }) {
   const building = getBuilding();
   const floor = getFloor(floorId) ?? getDefaultFloor();

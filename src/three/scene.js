@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 
-/** Renderer tuned for a dark architectural scene. */
+/** Renderizador ajustado para una escena arquitectónica oscura. */
 export function createRenderer(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -12,7 +12,7 @@ export function createRenderer(canvas) {
   return renderer;
 }
 
-/** Sun light sized to cast a usable shadow over the given extent. */
+/** Luz solar dimensionada para proyectar una sombra útil sobre el área dada. */
 function createSun(extent) {
   const sun = new THREE.DirectionalLight("#FFF6E8", 2.4);
   sun.position.set(extent * 1.1, extent * 1.7, extent * 0.8);
@@ -31,7 +31,7 @@ function createSun(extent) {
   return sun;
 }
 
-/** Dark ground disc with a faint ring, so the model has somewhere to sit. */
+/** Disco de suelo oscuro con un aro tenue para apoyar visualmente el modelo. */
 function createGround(extent) {
   const group = new THREE.Group();
 
@@ -55,10 +55,10 @@ function createGround(extent) {
 }
 
 /**
- * Assemble the scene around a model of the given extent.
+ * Compone la escena alrededor de un modelo con la extensión indicada.
  *
- * Lighting comes from `RoomEnvironment`, which ships with three, so the glass
- * gets believable reflections without downloading an HDRI.
+ * La iluminación proviene de `RoomEnvironment`, incluido en three, para obtener
+ * reflejos creíbles en el vidrio sin descargar un HDRI.
  */
 export function createScene(renderer, extent) {
   const scene = new THREE.Scene();
@@ -79,7 +79,7 @@ export function createScene(renderer, extent) {
   return { scene, environment, pmrem };
 }
 
-/** Keep the drawing buffer and camera in step with the element size. */
+/** Mantiene el búfer de dibujo y la cámara sincronizados con el tamaño del elemento. */
 export function resizeToHolder(renderer, camera, holder) {
   const { clientWidth, clientHeight } = holder;
   if (!clientWidth || !clientHeight) return;

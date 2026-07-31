@@ -1,29 +1,30 @@
 import { useState } from "react";
 import { statusStyle } from "../theme";
 
-/** Serialise percentage points into the SVG `points` attribute. */
+/** Serializa puntos porcentuales en el atributo SVG `points`. */
 function toPoints(points) {
   return points.map(([x, y]) => `${x},${y}`).join(" ");
 }
 
-/** Average the vertices — close enough to place a label inside the shape. */
+/** Promedia los vértices para ubicar una etiqueta dentro de la figura. */
 function centroid(points) {
   const sum = points.reduce((acc, [x, y]) => [acc[0] + x, acc[1] + y], [0, 0]);
   return [sum[0] / points.length, sum[1] / points.length];
 }
 
 /**
- * Interactive polygons layered over an image.
+ * Polígonos interactivos superpuestos sobre una imagen.
  *
- * Coordinates are percentages of the image box, so a shape stays aligned at any
- * size. The SVG stretches with `preserveAspectRatio="none"`, which would distort
- * text, so labels are positioned as HTML instead of drawn inside the SVG.
+ * Las coordenadas son porcentajes de la caja de la imagen, por lo que las figuras
+ * permanecen alineadas a cualquier tamaño. El SVG se estira con
+ * `preserveAspectRatio="none"` y deformaría el texto; las etiquetas se ubican
+ * como HTML en vez de dibujarse dentro del SVG.
  */
 /**
- * `restingFill` is how strongly an untouched zone is tinted. Zones separated by
- * gaps (units on a plan) can carry a strong tint and read as status at a glance.
- * Zones that tile a whole image (floor bands over a facade) need a faint one, or
- * the tint becomes the image.
+ * `restingFill` define la intensidad de una zona inactiva. Las zonas separadas
+ * (unidades de un plano) pueden tener un tinte fuerte para comunicar su estado.
+ * Las zonas que cubren toda una imagen (pisos sobre una fachada) necesitan uno
+ * tenue para no ocultarla.
  */
 export default function HotspotOverlay({
   shapes,
@@ -66,8 +67,8 @@ export default function HotspotOverlay({
               vectorEffect="non-scaling-stroke"
               className="cursor-pointer outline-none transition-[fill-opacity,stroke-opacity,stroke-width] duration-150"
               style={{
-                // Resting shapes already carry their status colour so the
-                // commercial state reads without hovering every zone.
+                // Las figuras inactivas ya muestran el color de su estado para
+                // comunicarlo sin tener que recorrer cada zona con el cursor.
                 fill: style.fill,
                 fillOpacity: highlighted ? 1 : restingFill,
                 stroke: style.color,
@@ -79,8 +80,8 @@ export default function HotspotOverlay({
         })}
       </svg>
 
-      {/* Only the highlighted zone gets a label: showing all of them at once
-          buries the image under text. */}
+      {/* Solo la zona resaltada muestra etiqueta; mostrarlas todas a la vez
+          ocultaría la imagen bajo el texto. */}
       {labelled &&
         shapes
           .filter((shape) => shape.id === hoveredId || shape.id === activeId)

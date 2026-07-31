@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 /**
- * Minimal history-based router.
+ * Router mínimo basado en el historial.
  *
- * The showroom has four static routes and never navigates to a user-supplied
- * URL, so a full routing library would only add dependency surface — every
- * react-router 7.x release currently carries open advisories, several of them
- * about the redirect handling this app does not use.
+ * El showroom tiene cuatro rutas estáticas y nunca navega a una URL provista por
+ * el usuario, por lo que una biblioteca de enrutamiento completa solo agregaría
+ * dependencias. Todas las versiones 7.x de react-router tienen avisos de seguridad
+ * abiertos, varios sobre redirecciones que esta aplicación no utiliza.
  */
 
 const NAVIGATE_EVENT = "showroom:navigate";
@@ -22,7 +22,7 @@ const ROUTES = [
   { name: "building", pattern: /^\/buildings\/(\d+)\/?$/, keys: ["buildingId"] },
 ];
 
-/** Match a pathname against the known routes. */
+/** Compara una ruta con las rutas conocidas. */
 export function matchRoute(pathname) {
   for (const route of ROUTES) {
     const found = route.pattern.exec(pathname);
@@ -36,7 +36,7 @@ export function matchRoute(pathname) {
   return { name: "home", params: {} };
 }
 
-/** Push or replace a URL and let the router know it changed. */
+/** Agrega o reemplaza una URL y notifica el cambio al router. */
 export function navigate(to, { replace = false } = {}) {
   if (replace) window.history.replaceState({}, "", to);
   else window.history.pushState({}, "", to);
@@ -50,7 +50,7 @@ function readLocation() {
   };
 }
 
-/** Subscribe to the current route and query string. */
+/** Se suscribe a la ruta y a los parámetros de consulta actuales. */
 export function useRoute() {
   const [location, setLocation] = useState(readLocation);
 
@@ -68,7 +68,7 @@ export function useRoute() {
   return { ...route, query: new URLSearchParams(location.search) };
 }
 
-/** Build the canonical URLs so route shapes live in one place. */
+/** Construye las URL canónicas para centralizar la forma de las rutas. */
 export const urls = {
   map: () => "/",
   building: (buildingId) => `/buildings/${buildingId}`,

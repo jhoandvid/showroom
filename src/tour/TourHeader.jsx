@@ -2,17 +2,17 @@ import { MapPin, MessageCircle } from "lucide-react";
 import { ACCENT } from "../theme";
 import { PROJECT } from "./tourConfig";
 
-/** Build the prefilled WhatsApp enquiry link for the current chapter. */
+/** Construye el enlace de consulta de WhatsApp precompletado para el capítulo actual. */
 function whatsappUrl(project, chapterLabel) {
   const message = `Hola, quiero más información sobre ${project.name} (${project.unit}). Estaba viendo: ${chapterLabel}.`;
   return `https://wa.me/${project.whatsappPhone}?text=${encodeURIComponent(message)}`;
 }
 
 /**
- * Project identity and contact call-to-action pinned to the top of the stage.
+ * Identidad del proyecto y llamado de contacto fijados en la parte superior.
  *
- * `project` lets a unit page override the defaults so the enquiry names the
- * unit the visitor is actually looking at.
+ * `project` permite que una página de unidad reemplace los valores predeterminados
+ * para que la consulta mencione la unidad que el visitante está viendo.
  */
 export default function TourHeader({ chapterLabel, project = PROJECT }) {
   return (

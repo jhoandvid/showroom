@@ -1,18 +1,18 @@
 /**
- * Geometry of the project volume drawn on the site map.
+ * Geometría del volumen del proyecto dibujado sobre el mapa del sitio.
  *
- * The map is a top-down raster, so the volume is a footprint quad extruded
- * straight up the screen. Both the SVG markup and the clickable silhouette come
- * from here, which is what keeps them aligned.
+ * El mapa es un ráster cenital, por lo que el volumen es una huella cuadrilateral
+ * extruida hacia arriba en pantalla. Tanto el SVG como la silueta interactiva se
+ * generan aquí para mantenerlos alineados.
  *
- * Coordinates are percentages of the composed map frame.
+ * Las coordenadas son porcentajes del cuadro de mapa compuesto.
  */
 
 export const MAP_FRAME = { w: 1024, h: 680 };
 
 /**
- * Footprint on the block, ordered back-left, back-right, front-right, front-left.
- * Slightly rotated to follow the street grid at this location.
+ * Huella sobre la manzana, ordenada: fondo izquierdo, fondo derecho, frente
+ * derecho y frente izquierdo. Está levemente girada para seguir la trama vial.
  */
 export const FOOTPRINT = [
   [46.4, 51.4],
@@ -21,7 +21,7 @@ export const FOOTPRINT = [
   [45.6, 57.9],
 ];
 
-/** Extrusion height, in percent of the frame height. */
+/** Altura de extrusión como porcentaje de la altura del cuadro. */
 export const HEIGHT = 17;
 
 const ACCENT = "#1FAE72";
@@ -30,7 +30,7 @@ const toPx = ([x, y]) => [(x / 100) * MAP_FRAME.w, (y / 100) * MAP_FRAME.h];
 const raise = ([x, y], dy) => [x, y - dy];
 const points = (pts) => pts.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
 
-/** Base and roof rings in pixel space. */
+/** Anillos de base y cubierta en coordenadas de píxeles. */
 function rings() {
   const base = FOOTPRINT.map(toPx);
   const dy = (HEIGHT / 100) * MAP_FRAME.h;
@@ -38,10 +38,10 @@ function rings() {
 }
 
 /**
- * Outline of the extruded volume.
+ * Contorno del volumen extruido.
  *
- * Walking the union boundary: the roof supplies the top and both upper flanks,
- * the base supplies the bottom edge.
+ * Recorre el límite de la unión: la cubierta aporta la parte superior y ambos
+ * laterales altos; la base aporta el borde inferior.
  */
 export function silhouette() {
   const { base, roof } = rings();
@@ -52,11 +52,11 @@ export function silhouette() {
   ]);
 }
 
-/** SVG markup for the volume: walls, storey lines, roof, shadow and label. */
+/** SVG del volumen: muros, líneas de pisos, cubierta, sombra y etiqueta. */
 export function massingSvg(name, levels) {
   const { base, roof, dy } = rings();
 
-  // Ground shadow, offset slightly to suggest a light source.
+  // Sombra sobre el suelo, desplazada levemente para sugerir una fuente de luz.
   const shadow = points(base.map(([x, y]) => [x + 9, y + 5]));
 
   const wall = (i, j, fill) =>

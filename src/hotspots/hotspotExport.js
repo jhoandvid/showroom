@@ -1,15 +1,15 @@
 const DECIMALS = 2;
 
-/** Round percentage coordinates so the exported JSON stays readable. */
+/** Redondea coordenadas porcentuales para mantener legible el JSON exportado. */
 function roundPoints(points) {
   return points.map(([x, y]) => [Number(x.toFixed(DECIMALS)), Number(y.toFixed(DECIMALS))]);
 }
 
 /**
- * Build the JSON snippet to paste into `building.json`.
+ * Construye el fragmento JSON que se pegará en `building.json`.
  *
- * `units` produces entries for a floor's `units` array; `floors` produces the
- * `hotspot` of each floor on the building render.
+ * `units` genera entradas para el arreglo `units` de un piso; `floors` genera el
+ * `hotspot` de cada piso sobre el render del edificio.
  */
 export function buildExport(shapes, mode) {
   if (mode === "floors") {
@@ -25,7 +25,7 @@ export function buildExport(shapes, mode) {
   }));
 }
 
-/** Serialise the export with the compact coordinate layout used in the repo. */
+/** Serializa la exportación con el formato compacto de coordenadas del repositorio. */
 export function serializeExport(shapes, mode) {
   const rows = buildExport(shapes, mode).map((entry) => {
     const { hotspot, ...rest } = entry;

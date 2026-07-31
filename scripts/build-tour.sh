@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# Turn a walkthrough render into the assets the showroom viewer consumes.
+# Convierte un render de recorrido en los assets usados por el visor.
 #
-# Usage:  bash scripts/build-tour.sh "/ruta/al/render.mp4" [frame_step]
+# Uso: bash scripts/build-tour.sh "/ruta/al/render.mp4" [salto_de_cuadros]
 #
-# Produces, under public/tour/:
-#   frames/f%03d.webp  stills for the drag-scrub interaction
-#   tour.mp4           compressed H.264 for smooth linear playback
-#   poster.webp        still used as the video poster
-# and rewrites src/tour/tourManifest.json to match.
+# Genera dentro de public/tour/:
+#   frames/f%03d.webp  imágenes para la interacción de arrastre
+#   tour.mp4           H.264 comprimido para reproducción continua
+#   poster.webp        imagen de portada del video
+# y reescribe src/tour/tourManifest.json para mantenerlo sincronizado.
 set -euo pipefail
 
 INPUT="${1:?Falta la ruta del render de entrada}"
-# Sampling step over the source frames. 6 turns a 30 fps render into 5 fps of
-# stills: responsive to scrub without shipping every frame.
+# Salto de muestreo sobre los cuadros originales. Un valor de 6 convierte un
+# render de 30 fps en imágenes a 5 fps: respuesta fluida sin enviar cada cuadro.
 STEP="${2:-6}"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -50,7 +50,7 @@ ffmpeg -y -v error -i "$INPUT" \
   "$FRAMES/f%03d.webp"
 
 echo "[2/3] Comprimiendo mp4 de reproducción…"
-# Audio is dropped: these renders carry none, and it keeps the payload down.
+# Se elimina el audio: estos renders no lo usan y así se reduce el peso.
 ffmpeg -y -v error -i "$INPUT" -an \
   -c:v libx264 -preset slow -crf 28 -g 48 -pix_fmt yuv420p \
   -movflags +faststart -vf "scale=${VIDEO_WIDTH}:-2" "$OUT/tour.mp4"

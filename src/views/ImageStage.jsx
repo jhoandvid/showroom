@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Image as ImageIcon } from "lucide-react";
 
 /**
- * Container for an image plus its hotspot overlay.
+ * Contenedor para una imagen y su capa de hotspots.
  *
- * Hotspot coordinates are percentages of this box, so the box has to match the
- * image exactly: the image drives the height (`h-auto`) instead of being fitted
- * into a fixed frame, which `object-contain` would letterbox and misalign.
- * When the asset is missing we fall back to a fixed-ratio placeholder so the
- * overlay still has a stable coordinate space.
+ * Las coordenadas son porcentajes de esta caja, que debe coincidir exactamente
+ * con la imagen. La imagen define la altura (`h-auto`) en vez de ajustarse a un
+ * marco fijo, ya que `object-contain` agregaría bandas y desalinearía las zonas.
+ * Si falta el asset se usa un marcador de proporción fija para conservar un
+ * espacio de coordenadas estable.
  */
 export default function ImageStage({ src, alt, ratio = "16 / 10", note, children }) {
   const [failed, setFailed] = useState(false);
