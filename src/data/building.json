@@ -1,0 +1,1336 @@
+{
+  "id": 166,
+  "name": "Bosques del Norte",
+  "location": "Bogotá, Colombia",
+  "exteriorImage": "/building/exterior.svg",
+  "currency": "COP",
+  "floors": [
+    {
+      "id": 757,
+      "level": 8,
+      "label": "Piso 8",
+      "planImage": "/building/floors/757.svg",
+      "hotspot": [
+        [
+          26,
+          18
+        ],
+        [
+          74,
+          18
+        ],
+        [
+          74,
+          26.5
+        ],
+        [
+          26,
+          26.5
+        ]
+      ],
+      "units": [
+        {
+          "code": "801",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 404000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "802",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "disponible",
+          "price": 319000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "803",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "vendido",
+          "price": 437000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "804",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "reservado",
+          "price": 285000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 756,
+      "level": 7,
+      "label": "Piso 7",
+      "planImage": "/building/floors/756.svg",
+      "hotspot": [
+        [
+          26,
+          26.5
+        ],
+        [
+          74,
+          26.5
+        ],
+        [
+          74,
+          35
+        ],
+        [
+          26,
+          35
+        ]
+      ],
+      "units": [
+        {
+          "code": "701",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 398000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "702",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "vendido",
+          "price": 313000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "703",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 431000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "704",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "disponible",
+          "price": 279000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 755,
+      "level": 6,
+      "label": "Piso 6",
+      "planImage": "/building/floors/755.svg",
+      "hotspot": [
+        [
+          26,
+          35
+        ],
+        [
+          74,
+          35
+        ],
+        [
+          74,
+          43.5
+        ],
+        [
+          26,
+          43.5
+        ]
+      ],
+      "units": [
+        {
+          "code": "601",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "vendido",
+          "price": 392000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "602",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "reservado",
+          "price": 307000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "603",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 425000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "604",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "vendido",
+          "price": 273000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 754,
+      "level": 5,
+      "label": "Piso 5",
+      "planImage": "/building/floors/754.svg",
+      "hotspot": [
+        [
+          26,
+          43.5
+        ],
+        [
+          74,
+          43.5
+        ],
+        [
+          74,
+          52
+        ],
+        [
+          26,
+          52
+        ]
+      ],
+      "units": [
+        {
+          "code": "501",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 386000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "502",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "disponible",
+          "price": 301000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "503",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "vendido",
+          "price": 419000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "504",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "reservado",
+          "price": 267000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 753,
+      "level": 4,
+      "label": "Piso 4",
+      "planImage": "/building/floors/753.svg",
+      "hotspot": [
+        [
+          26,
+          52
+        ],
+        [
+          74,
+          52
+        ],
+        [
+          74,
+          60.5
+        ],
+        [
+          26,
+          60.5
+        ]
+      ],
+      "units": [
+        {
+          "code": "401",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 380000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "402",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "vendido",
+          "price": 295000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "403",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 413000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "404",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "disponible",
+          "price": 261000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 752,
+      "level": 3,
+      "label": "Piso 3",
+      "planImage": "/building/floors/752.svg",
+      "hotspot": [
+        [
+          26,
+          60.5
+        ],
+        [
+          74,
+          60.5
+        ],
+        [
+          74,
+          69
+        ],
+        [
+          26,
+          69
+        ]
+      ],
+      "units": [
+        {
+          "code": "301",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "vendido",
+          "price": 374000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "302",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "reservado",
+          "price": 289000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "303",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 407000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "304",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "vendido",
+          "price": 255000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 751,
+      "level": 2,
+      "label": "Piso 2",
+      "planImage": "/building/floors/751.svg",
+      "hotspot": [
+        [
+          26,
+          69
+        ],
+        [
+          74,
+          69
+        ],
+        [
+          74,
+          77.5
+        ],
+        [
+          26,
+          77.5
+        ]
+      ],
+      "units": [
+        {
+          "code": "201",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 368000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "202",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "disponible",
+          "price": 283000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "203",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "vendido",
+          "price": 401000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "204",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "reservado",
+          "price": 249000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "id": 750,
+      "level": 1,
+      "label": "Piso 1",
+      "planImage": "/building/floors/750.svg",
+      "hotspot": [
+        [
+          26,
+          77.5
+        ],
+        [
+          74,
+          77.5
+        ],
+        [
+          74,
+          86
+        ],
+        [
+          26,
+          86
+        ]
+      ],
+      "units": [
+        {
+          "code": "101",
+          "slot": "A",
+          "area": 68.4,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 362000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              50,
+              26.67
+            ],
+            [
+              66.51,
+              38.57
+            ],
+            [
+              50.08,
+              50.41
+            ],
+            [
+              33.57,
+              38.51
+            ]
+          ],
+          "planBox": [
+            15,
+            20,
+            49,
+            49
+          ]
+        },
+        {
+          "code": "102",
+          "slot": "B",
+          "area": 52.1,
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "status": "vendido",
+          "price": 277000000,
+          "tour": null,
+          "hotspot": [
+            [
+              67.49,
+              39.27
+            ],
+            [
+              84,
+              51.17
+            ],
+            [
+              67.57,
+              63.01
+            ],
+            [
+              51.05,
+              51.11
+            ]
+          ],
+          "planBox": [
+            51,
+            20,
+            85,
+            49
+          ]
+        },
+        {
+          "code": "103",
+          "slot": "C",
+          "area": 74.8,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "status": "disponible",
+          "price": 395000000,
+          "tour": "duplex-123",
+          "hotspot": [
+            [
+              32.43,
+              39.33
+            ],
+            [
+              48.95,
+              51.23
+            ],
+            [
+              32.51,
+              63.07
+            ],
+            [
+              16,
+              51.17
+            ]
+          ],
+          "planBox": [
+            15,
+            51,
+            49,
+            80
+          ]
+        },
+        {
+          "code": "104",
+          "slot": "D",
+          "area": 45.6,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "status": "disponible",
+          "price": 243000000,
+          "tour": null,
+          "hotspot": [
+            [
+              49.92,
+              51.92
+            ],
+            [
+              66.43,
+              63.83
+            ],
+            [
+              50,
+              75.67
+            ],
+            [
+              33.49,
+              63.77
+            ]
+          ],
+          "planBox": [
+            51,
+            51,
+            85,
+            80
+          ]
+        }
+      ]
+    }
+  ],
+  "site": {
+    "center": [
+      -74.045,
+      4.728
+    ],
+    "footprint": [
+      [
+        -74.0452019,
+        4.727917
+      ],
+      [
+        -74.0448726,
+        4.7278222
+      ],
+      [
+        -74.0447981,
+        4.728083
+      ],
+      [
+        -74.0451274,
+        4.7281778
+      ],
+      [
+        -74.0452019,
+        4.727917
+      ]
+    ],
+    "floorHeightMeters": 3.1,
+    "groundFloorMeters": 4.2,
+    "bearing": -16
+  }
+}

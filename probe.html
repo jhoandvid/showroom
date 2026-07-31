@@ -1,0 +1,44 @@
+<!-- Temporary MapLibre diagnostic page. Delete once the map is verified. -->
+<style>
+  html, body { margin: 0; background: #111; color: #eee; font: 12px system-ui; }
+  #map { width: 800px; height: 420px; }
+</style>
+<div id="map"></div>
+<pre id="status">PROBE init</pre>
+<script type="module">
+  import { Map as MapLibreMap } from "maplibre-gl";
+  import "maplibre-gl/dist/maplibre-gl.css";
+
+  const out = document.getElementById("status");
+  const seen = [];
+  const say = (m) => {
+    if (!seen.includes(m)) seen.push(m);
+    out.textContent = `PROBE ${seen.join(" | ")}`;
+  };
+
+  // Count tile requests: no tile traffic means the worker never came up.
+  let tiles = 0;
+  const realFetch = window.fetch;
+  window.fetch = (...args) => {
+    const url = String(args[0]?.url ?? args[0]);
+    if (url.includes(".mvt")) tiles += 1;
+    return realFetch(...args);
+  };
+
+  const map = new MapLibreMap({
+    container: "map",
+    style: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+    center: [-74.045, 4.728],
+    zoom: 16,
+  });
+
+  map.on("error", (e) => say(`ERR:${e?.error?.message ?? "unknown"}`));
+  map.on("sourcedata", (e) => say(`sourcedata:${e.sourceId}:${e.isSourceLoaded}`));
+  map.on("load", () => say("LOAD"));
+
+  setTimeout(() => {
+    say(`tiles=${tiles}`);
+    say(`styleLoaded=${map.isStyleLoaded()}`);
+    say(`tilesLoaded=${map.areTilesLoaded()}`);
+  }, 6000);
+</script>

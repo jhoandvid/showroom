@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12181A"/><stop offset="100%" stop-color="#1D2426"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="780" fill="url(#bg)"/>
+
+  <polygon points="1045.9,423.7 597.1,633.9 597.1,663.9 1045.9,453.7" fill="#8E9A98"/>
+  <polygon points="597.1,633.9 154.1,426.5 154.1,456.5 597.1,663.9" fill="#8E9A98"/>
+  <polygon points="602.9,216.3 1045.9,423.7 597.1,633.9 154.1,426.5" fill="#C3CBC9" stroke="#7A8685" stroke-width="2"/>
+
+  
+    <g>
+      <polygon points="798.2,300.8 601,393.2 601,419.2 798.2,326.8" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="601,393.2 402.8,300.4 402.8,326.4 601,419.2" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="600,208 798.2,300.8 601,393.2 402.8,300.4" fill="#F1F4F3" stroke="#5C6968" stroke-width="2.5"/>
+      <line x1="491.5" y1="258.8" x2="689.7" y2="351.6" stroke="#96A2A1" stroke-width="1.5"/>
+      <polygon points="604.6,332.1 668,361.8 601,393.2 537.6,363.5" fill="#DFE6E5" stroke="#96A2A1" stroke-width="1.5"/>
+      <text x="600.5" y="296.6" text-anchor="middle" font-family="system-ui,sans-serif" font-size="27" font-weight="600" fill="#33413F">101</text>
+      <text x="600.5" y="317.6" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#6C7978">68,4 m² · A</text>
+    </g>
+    <g>
+      <polygon points="587.4,399.6 390.2,491.9 390.2,517.9 587.4,425.6" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="390.2,491.9 192,399.1 192,425.1 390.2,517.9" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="389.2,306.7 587.4,399.6 390.2,491.9 192,399.1" fill="#F1F4F3" stroke="#5C6968" stroke-width="2.5"/>
+      <line x1="280.7" y1="357.5" x2="478.9" y2="450.4" stroke="#96A2A1" stroke-width="1.5"/>
+      <polygon points="524,369.9 587.4,399.6 520.3,431 456.9,401.3" fill="#DFE6E5" stroke="#96A2A1" stroke-width="1.5"/>
+      <text x="389.7" y="395.3" text-anchor="middle" font-family="system-ui,sans-serif" font-size="27" font-weight="600" fill="#33413F">103</text>
+      <text x="389.7" y="416.3" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#6C7978">74,8 m² · C</text>
+    </g>
+    <g>
+      <polygon points="1008,399.1 810.8,491.5 810.8,517.5 1008,425.1" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="810.8,491.5 612.6,398.6 612.6,424.6 810.8,517.5" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="809.8,306.3 1008,399.1 810.8,491.5 612.6,398.6" fill="#F1F4F3" stroke="#5C6968" stroke-width="2.5"/>
+      <line x1="687.6" y1="363.5" x2="885.7" y2="456.4" stroke="#96A2A1" stroke-width="1.5"/>
+      <polygon points="679.7,367.2 743.1,396.9 676,428.3 612.6,398.6" fill="#DFE6E5" stroke="#96A2A1" stroke-width="1.5"/>
+      <text x="810.3" y="394.9" text-anchor="middle" font-family="system-ui,sans-serif" font-size="27" font-weight="600" fill="#33413F">102</text>
+      <text x="810.3" y="415.9" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#6C7978">52,1 m² · B</text>
+    </g>
+    <g>
+      <polygon points="797.2,497.8 600,590.2 600,616.2 797.2,523.8" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="600,590.2 401.8,497.4 401.8,523.4 600,616.2" fill="#B7C1BF" stroke="#778483" stroke-width="1.5"/>
+      <polygon points="599,405 797.2,497.8 600,590.2 401.8,497.4" fill="#F1F4F3" stroke="#5C6968" stroke-width="2.5"/>
+      <line x1="476.8" y1="462.3" x2="674.9" y2="555.1" stroke="#96A2A1" stroke-width="1.5"/>
+      <polygon points="599,405 662.4,434.7 595.4,466.1 532,436.4" fill="#DFE6E5" stroke="#96A2A1" stroke-width="1.5"/>
+      <text x="599.5" y="493.6" text-anchor="middle" font-family="system-ui,sans-serif" font-size="27" font-weight="600" fill="#33413F">104</text>
+      <text x="599.5" y="514.6" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#6C7978">45,6 m² · D</text>
+    </g>
+
+  <text x="40" y="58" font-family="system-ui,sans-serif" font-size="27" font-weight="600" fill="rgba(255,255,255,0.88)">Piso 1</text>
+  <text x="40" y="84" font-family="system-ui,sans-serif" font-size="15" fill="rgba(255,255,255,0.4)">4 unidades · planta axonométrica generada</text>
+</svg>
